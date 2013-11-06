@@ -4,8 +4,14 @@
 class UserController extends BaseController{
 	// Renderiza el login
 	public function login(){
+		if (!Session::has('session_user.logged')) {
 		// renderizamos la vista
-		$this->layout->content = View::make('user/login');
+			$this->layout->content = View::make('user/login');
+		}
+		else {
+			return Redirect::to('main');
+		}
+		
 	}
 
 	// Renderiza el formulario de registgo
@@ -20,6 +26,9 @@ class UserController extends BaseController{
 		$data = User::where('username', $user)->where('password', $password)->get(); // parametros . 1 -nombre campo bd, 2 - operador - 3 -comparacion de variable
 		if(count($data) > 0 ){
 			Session::set('session_user.name', $user);
+			Session::set('session_user.logged', true);
+
+			print_r($_SESSION);
 		}
 		else{
 			return 'fail';
@@ -61,6 +70,10 @@ class UserController extends BaseController{
 		}
 	}
 
-	
+	public function logout()
+	{
+		Session::flush();
+		return Redirect::to('user/login');
+	}
 
 }

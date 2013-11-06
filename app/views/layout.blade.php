@@ -87,8 +87,13 @@
 	 			<div class="col-lg-8" >	 	
 	 				<ul class="inline-list pull-right">
 						<li>{{ link_to('main', 'Main') }}</li>
-						<li>{{ link_to_action('UserController@login', 'Login') }}</li>
+						@if(!Session::has('session_user.logged'))
+							<li>{{ link_to_action('UserController@login', 'Login') }}</li>
+						@endif
 						<li>{{ link_to_action('UserController@register', 'Registrarse') }}</li>
+						@if(Session::has('session_user.logged'))
+							<li>{{link_to_action('UserController@logout','Logout')}}</li>
+						@endif
 					</ul>					
 	 			</div>
  			</div>

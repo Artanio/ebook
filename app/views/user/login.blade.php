@@ -13,8 +13,15 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="col-lg-12">
+		@if(Session::has('msg'))
+			<div class="alert alert-danger">{{ Session::get('msg') }}</div>
+		@endif
+	</div>
+</div>
 <div class="row" style="margin-bottom: 100px">
-	<div class="col-lg-8 col-md-5">	
+	<div class="col-lg-8 col-md-5">			
 		{{ Form::open(array('action'=>'UserController@authenticate','method'=>'post', 'class'=>'form-horizontal')); }}
 			<div class="form-group">
 				<label for="inputEmail1" class="col-lg-3 control-label">Username</label>

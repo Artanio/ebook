@@ -1,0 +1,29 @@
+{{-- 
+{{ Form::open(array('action'=>'UserController@validate','method'=>'post')); }}
+<table>
+	<tr>
+		<td>Username</td>
+		<td>{{  Form::text('username'); }}</td>
+		<td>{{  $errors->first('username'); }} </td>
+	</tr>
+	<tr>
+		<td>E-mail</td>
+		<td>{{  Form::text('mail'); }}</td>
+		<td>{{  $errors->first('mail'); }} </td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td>{{  Form::password('pass'); }}</td>
+		<td>{{  $errors->first('pass'); }} </td>
+	</tr>
+	<tr>
+		<td>Confirmacion</td>
+		<td>{{ Form::password('pass_confirmation'); }}</td>		
+	</tr>
+	<tr>
+		
+		<td>{{ Form::submit('registrar'); }}</td>
+	</tr>
+</table>
+{{ Form::close(); }}
+--}}
